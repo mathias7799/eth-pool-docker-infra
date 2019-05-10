@@ -16,10 +16,6 @@ cd ../pool-ui
 ./run-pool-ui.sh
 sleep 2
 
-cd ../pool-payouts
-./run-eth-pool-payouts.sh
-sleep 2
-
 cd ../redis-cmd
 ./run-redis-cmd.sh
 
