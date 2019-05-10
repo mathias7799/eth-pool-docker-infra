@@ -1,12 +1,22 @@
 FROM golang:1.10.0
 
-WORKDIR /go/src/app
+WORKDIR /home/
 RUN git config --global http.https://gopkg.in.followRedirects true
-RUN git clone https://github.com/sammy007/open-ethereum-pool.git
+RUN git clone https://gitlab.com/mathias77992/Protonmine-pool.git
 
-WORKDIR /go/src/app/open-ethereum-pool
+WORKDIR /home/Protonmine-pool
 RUN make
 
-COPY config.json .
+COPY api.json .
+COPY unlocker.json .
+COPY payouts.json .
+COPY 2b.json .
+COPY 4b.json .
+COPY 9b.json .
 
-CMD ["./build/bin/open-ethereum-pool", "config.json"]
+CMD ["./build/bin/open-callisto-pool", "api.json"]
+CMD ["./build/bin/open-callisto-pool", "unlocker.json"]
+CMD ["./build/bin/open-callisto-pool", "payouts.json"]
+CMD ["./build/bin/open-callisto-pool", "2b.json"]
+CMD ["./build/bin/open-callisto-pool", "4b.json"]
+CMD ["./build/bin/open-callisto-pool", "9b.json"]
